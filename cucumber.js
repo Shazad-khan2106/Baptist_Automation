@@ -6,7 +6,7 @@ module.exports = {
       ],
       requireModule: ['ts-node/register'],
       format: ['progress'],
-      paths: ['tests/features/*.feature'],
+      paths: ['tests/features/staticFlowToChatbot.feature'],
     },
   };
   

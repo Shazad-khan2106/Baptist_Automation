@@ -41,7 +41,6 @@ reporter.generate({
       { label: 'Execution End Time', value: new Date().toLocaleString() },
       { label: 'Executed By', value: process.env.GITHUB_ACTOR },
       { label: 'Branch', value: process.env.GITHUB_REF_NAME },
-      { label: 'Commit', value: process.env.GITHUB_SHA.substring(0, 7) },
       { label: 'Environment', value: 'Dev' },
     ]
   },
