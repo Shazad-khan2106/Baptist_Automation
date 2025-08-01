@@ -42,5 +42,5 @@ report.forEach(feature => {
   summary.features.push(featureData);
 });
 
-fs.writeFileSync("./html-report/test-summary.json", JSON.stringify(summary, null, 2));
+fs.writeFileSync("test-summary.json", JSON.stringify(summary, null, 2));
 console.log("✅ Detailed test summary written to test-summary.json");
