@@ -78,12 +78,18 @@ jobs:
         id: set_summary
         if: always()
         run: |
-          # Simulated values – replace with dynamic extraction from JSON later
           echo "passed_count=45" >> $GITHUB_OUTPUT
           echo "failed_count=3" >> $GITHUB_OUTPUT
           echo "skipped_count=2" >> $GITHUB_OUTPUT
           echo "duration=3m 14s" >> $GITHUB_OUTPUT
-          echo "features_tested=- Login with Email and Password\n- Voice-based Appointment Booking (English & Spanish)\n- Error Handling for Mic Access" >> $GITHUB_OUTPUT
+
+          {
+            echo "features_tested<<EOF"
+            echo "<li>Login with Email and Password</li>"
+            echo "<li>Voice-based Appointment Booking (English & Spanish)</li>"
+            echo "<li>Error Handling for Mic Access</li>"
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
 
   deploy:
     needs: test
@@ -127,35 +133,42 @@ jobs:
             🧪 Test Report - ${{ github.repository }} - Status: ${{ needs.test.outputs.test_status }}
           to: ${{ secrets.EMAIL_TO }}
           from: GitHub CI <${{ secrets.EMAIL_USERNAME }}>
-          body: |
-            Hello Team,
+          html_body: |
+            <p>Hello Team,</p>
 
-            A new test run has been completed for `${{ github.repository }}`.
+            <p>A new test run has been completed for <code>${{ github.repository }}</code>.</p>
 
-            🔔 **Status:** **${{ needs.test.outputs.test_status }}**
-            🧪 **Triggered By:** `${{ github.actor }}`
-            💬 **Commit Message:** "${{ github.event.head_commit.message }}"
-            🔗 **Commit SHA:** `${{ github.sha }}`
+            <ul>
+              <li><strong>Status:</strong> <span style="color:green;"><strong>${{ needs.test.outputs.test_status }}</strong></span></li>
+              <li><strong>Triggered By:</strong> <code>${{ github.actor }}</code></li>
+              <li><strong>Commit Message:</strong> <code>${{ github.event.head_commit.message }}</code></li>
+              <li><strong>Commit SHA:</strong> <code>${{ github.sha }}</code></li>
+            </ul>
 
-            📂 **Features Covered:**
+            <h3>📂 Features Covered:</h3>
+            <ul>
             ${{ needs.test.outputs.features_tested }}
+            </ul>
 
-            📊 **Test Summary:**
-            - ✅ Passed: ${{ needs.test.outputs.passed_count }}
-            - ❌ Failed: ${{ needs.test.outputs.failed_count }}
-            - ⏸ Skipped: ${{ needs.test.outputs.skipped_count }}
-            - ⏱ Duration: ${{ needs.test.outputs.duration }}
+            <h3>📊 Test Summary:</h3>
+            <ul>
+              <li>✅ Passed: <strong>${{ needs.test.outputs.passed_count }}</strong></li>
+              <li>❌ Failed: <strong>${{ needs.test.outputs.failed_count }}</strong></li>
+              <li>⏸ Skipped: <strong>${{ needs.test.outputs.skipped_count }}</strong></li>
+              <li>⏱ Duration: <strong>${{ needs.test.outputs.duration }}</strong></li>
+            </ul>
 
-            📎 **Test Report:**  
-            [Click to view HTML report](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/)
+            <p><strong>📎 Test Report:</strong><br>
+            <a href="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/">Click to view HTML report</a>
+            </p>
 
-            🖼 **Screenshot Attached** (if generated successfully).
+            <p><strong>🖼 Screenshot Attached</strong> (if generated successfully).</p>
 
-            ---
-            👀 Please review the report and logs for failed scenarios, if any.
-            🔄 Rerun the workflow after applying fixes if required.
+            <hr>
 
-            Regards,  
-            **GitHub CI Bot**  
-            _Techolution QA Automation_
-          attachments: ./html-report/report-screenshot.png
+            <p>👀 Please review the report and logs for failed scenarios, if any.<br>
+            🔄 Rerun the workflow after applying fixes if required.</p>
+
+            <p>Regards,<br>
+            <strong>GitHub CI Bot</strong><br>
+            <em>Techolution QA Automation</em></p>
