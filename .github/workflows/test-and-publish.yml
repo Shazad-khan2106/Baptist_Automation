@@ -36,8 +36,11 @@ jobs:
         id: run_tests
         env:
           CI: true
+          BAPTIST_USERNAME: ${{ secrets.BAPTIST_USERNAME }}
+          BAPTIST_PASSWORD: ${{ secrets.BAPTIST_PASSWORD }}
         run: |
           npm run test || echo "TEST_FAILED=true" >> $GITHUB_ENV
+
 
       - name: Generate Custom HTML Report
         if: always()
