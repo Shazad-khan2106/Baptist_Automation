@@ -1,7 +1,7 @@
 import { Given, When, Then } from "@cucumber/cucumber";
 import { CustomWorld } from "../../support/world";
 import { StaticFlowToChatbot } from "../pages/StaticFlowToChatBot";
-const { testData } = require('../test_data');
+const { testData } = require('../test_data/properties');
 
 
 
