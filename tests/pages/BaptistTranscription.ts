@@ -3,7 +3,8 @@ import path from 'path';
 dotenv.config();
 import { streamAudioToBot } from '../utils/streamAudioToBot';
 import { isFuzzyMatch } from '../utils/fuzzyMatch';
-const { testData } = require('../test_data');import { CustomWorld } from '../../support/world'; 
+const { testData } = require('../test_data/properties');
+import { CustomWorld } from '../../support/world'; 
 
 
 export class BaptistTranscription {

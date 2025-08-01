@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
-const { testData } = require('../test_data');
+const { testData } = require('../test_data/properties');
 import { CustomWorld } from '../../support/world'; 
 import { baptistLocators, loginLocators } from '../locator/locators'; 
 import { expect } from 'playwright/test';
