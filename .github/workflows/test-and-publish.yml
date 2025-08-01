@@ -32,19 +32,15 @@ jobs:
       - name: Install Playwright
         run: npx playwright install
 
-      - name: Get Login Details
-        id: always()
-        env:
-          BAPTIST_USERNAME: ${{ secrets.BAPTIST_USERNAME }}
-          BAPTIST_PASSWORD: ${{ secrets.BAPTIST_PASSWORD }}
-
-
       - name: Run Cucumber Tests
         id: run_tests
         env:
           CI: true
+          BAPTIST_USERNAME: ${{ secrets.BAPTIST_USERNAME }}
+          BAPTIST_PASSWORD: ${{ secrets.BAPTIST_PASSWORD }}
         run: |
           npm run test || echo "TEST_FAILED=true" >> $GITHUB_ENV
+
 
       - name: Generate Custom HTML Report
         if: always()
