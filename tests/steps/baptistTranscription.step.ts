@@ -2,7 +2,6 @@ import { Given, When, Then } from '@cucumber/cucumber';
 import { CustomWorld } from '../../support/world';
 import { expect } from '@playwright/test';
 import { BaptistTranscription } from '../pages/BaptistTranscription'
-import { testData } from "../test_data/properties.json";
 import * as dotenv from 'dotenv';
 dotenv.config();
 

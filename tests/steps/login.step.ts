@@ -1,7 +1,8 @@
 import { Given, When, Then } from "@cucumber/cucumber";
 import { CustomWorld } from "../../support/world";
 import { StaticFlowToChatbot } from "../pages/StaticFlowToChatBot";
-import {testData} from '../test_data/properties.json';
+const { testData } = require('../test_data');
+
 
 
 Given('I open the baptist login page', async function (this: CustomWorld) {
