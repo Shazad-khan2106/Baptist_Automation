@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 717534400
+              "duration": 516035400
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2719109599
+              "duration": 2756131000
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 977306300
+              "duration": 525961100
             }
           },
           {
@@ -53,176 +53,176 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6611800
+              "duration": 9525400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I am on the navigation bar",
+            "match": {
+              "location": "tests\\steps\\staticFlowToChatbot.step.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4013841800
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 8,
-            "name": "I see the navigation bar",
-            "match": {
-              "location": "tests\\steps\\staticFlowToChatbot.ts:9"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2983689000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
             "line": 9,
-            "name": "I click on \"Get Care\" option",
+            "name": "I click on the \"Get Care\" option in the navigation bar",
             "match": {
-              "location": "tests\\steps\\staticFlowToChatbot.ts:13"
+              "location": "tests\\steps\\staticFlowToChatbot.step.ts:13"
             },
             "result": {
               "status": "passed",
-              "duration": 326549200
+              "duration": 432272800
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 10,
-            "name": "I select \"Schedule Appointment\" option",
+            "name": "I select the \"Schedule Appointment\" option",
             "match": {
-              "location": "tests\\steps\\staticFlowToChatbot.ts:17"
+              "location": "tests\\steps\\staticFlowToChatbot.step.ts:17"
             },
             "result": {
               "status": "passed",
-              "duration": 76898799
+              "duration": 106089099
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 11,
-            "name": "I click on \"Primary Care\" card",
+            "name": "I click on the \"Primary Care\" card",
             "match": {
-              "location": "tests\\steps\\staticFlowToChatbot.ts:21"
+              "location": "tests\\steps\\staticFlowToChatbot.step.ts:21"
             },
             "result": {
               "status": "passed",
-              "duration": 927927299
+              "duration": 1030424999
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 12,
-            "name": "I can see the chatbot with tooltip",
+            "name": "I should see the chatbot with a tooltip",
             "match": {
-              "location": "tests\\steps\\staticFlowToChatbot.ts:25"
+              "location": "tests\\steps\\staticFlowToChatbot.step.ts:25"
             },
             "result": {
               "status": "passed",
-              "duration": 965399
+              "duration": 1728100
             }
           },
           {
             "arguments": [],
-            "keyword": "And ",
+            "keyword": "When ",
             "line": 13,
             "name": "I click on the chatbot icon",
             "match": {
-              "location": "tests\\steps\\staticFlowToChatbot.ts:29"
+              "location": "tests\\steps\\staticFlowToChatbot.step.ts:29"
             },
             "result": {
               "status": "passed",
-              "duration": 271047000
+              "duration": 141021999
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 14,
-            "name": "chatbot window is open",
+            "name": "The chatbot window should open",
             "match": {
-              "location": "tests\\steps\\staticFlowToChatbot.ts:33"
+              "location": "tests\\steps\\staticFlowToChatbot.step.ts:33"
             },
             "result": {
               "status": "passed",
-              "duration": 1049899
+              "duration": 1223200
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 15,
-            "name": "I can see a toast message for emergency",
+            "name": "I should see a toast message for emergency",
             "match": {
-              "location": "tests\\steps\\staticFlowToChatbot.ts:37"
+              "location": "tests\\steps\\staticFlowToChatbot.step.ts:37"
             },
             "result": {
               "status": "passed",
-              "duration": 1712299
+              "duration": 838200
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 16,
-            "name": "A welcome message from chat assistant",
+            "name": "I should see a welcome message from the chat assistant",
             "match": {
-              "location": "tests\\steps\\staticFlowToChatbot.ts:41"
+              "location": "tests\\steps\\staticFlowToChatbot.step.ts:41"
             },
             "result": {
               "status": "passed",
-              "duration": 347024199
+              "duration": 406683800
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 17,
-            "name": "speaker and back button at the top",
+            "name": "I should see the speaker and back buttons at the top",
             "match": {
-              "location": "tests\\steps\\staticFlowToChatbot.ts:45"
+              "location": "tests\\steps\\staticFlowToChatbot.step.ts:45"
             },
             "result": {
               "status": "passed",
-              "duration": 1152000
+              "duration": 1590299
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 18,
-            "name": "An input element with disabled mic icon",
+            "name": "I should see an input field with a disabled mic icon",
             "match": {
-              "location": "tests\\steps\\staticFlowToChatbot.ts:49"
+              "location": "tests\\steps\\staticFlowToChatbot.step.ts:49"
             },
             "result": {
               "status": "passed",
-              "duration": 1156100
+              "duration": 1211899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 19,
+            "name": "I click on the information (i) button",
+            "match": {
+              "location": "tests\\steps\\staticFlowToChatbot.step.ts:53"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 96657800
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 19,
-            "name": "I click on i button",
-            "match": {
-              "location": "tests\\steps\\staticFlowToChatbot.ts:53"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 131954700
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
             "line": 20,
-            "name": "A overlay gets open with a message and \"Got It\" button",
+            "name": "an overlay should appear with a message and a \"Got It\" button",
             "match": {
-              "location": "tests\\steps\\staticFlowToChatbot.ts:57"
+              "location": "tests\\steps\\staticFlowToChatbot.step.ts:57"
             },
             "result": {
               "status": "passed",
-              "duration": 11152200
+              "duration": 14777699
             }
           },
           {
@@ -230,11 +230,11 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 410481299
+              "duration": 188702200
             },
             "embeddings": [
               {
-                "data": "WzIwMjUtMDctMzFUMTk6NTg6MzguMzMzWl0gTmF2aWdhdGluZyB0byBsb2dpbiBwYWdlClsyMDI1LTA3LTMxVDE5OjU4OjQxLjA1M1pdIExvZ2dpbmcgaW4gd2l0aCB1c2VyOiBSdWNoaXRoYUAyNgpbMjAyNS0wNy0zMVQxOTo1ODo0Mi4wMzdaXSBIb21lcGFnZSB2aXNpYmlsaXR5OiBmYWxzZQ==",
+                "data": "WzIwMjUtMDgtMDFUMDc6NDc6MzAuODc5Wl0gTmF2aWdhdGluZyB0byBsb2dpbiBwYWdlClsyMDI1LTA4LTAxVDA3OjQ3OjMzLjYzN1pdIExvZ2dpbmcgaW4gd2l0aCB1c2VyOiBSdWNoaXRoYUAyNgpbMjAyNS0wOC0wMVQwNzo0NzozNC4xNzFaXSBIb21lcGFnZSB2aXNpYmlsaXR5OiBmYWxzZQ==",
                 "mime_type": "text/plain"
               },
               {
