@@ -18,12 +18,13 @@ jobs:
       skipped_count: ${{ steps.set_summary.outputs.skipped_count }}
       duration: ${{ steps.set_summary.outputs.duration }}
       features_tested: ${{ steps.set_summary.outputs.features_tested }}
+      steps_summary: ${{ steps.set_summary.outputs.steps_summary }}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install ffmpeg (for CI environment)
+      - name: Install ffmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
       - name: Setup Node.js
@@ -69,27 +70,34 @@ jobs:
             ./html-report
             ./report-screenshot.png
 
-      - name: Set Job Status
-        id: set_status
+      - name: Parse Feature & Step Summary from Cucumber Report
         if: always()
-        run: echo "status=${{ job.status }}" >> $GITHUB_OUTPUT
+        run: |
+          node parse-summary.js
 
       - name: Set Summary Outputs
         id: set_summary
         if: always()
         run: |
-          echo "passed_count=45" >> $GITHUB_OUTPUT
-          echo "failed_count=3" >> $GITHUB_OUTPUT
-          echo "skipped_count=2" >> $GITHUB_OUTPUT
-          echo "duration=3m 14s" >> $GITHUB_OUTPUT
+          summary=$(cat test-summary.json)
 
-          {
-            echo "features_tested<<EOF"
-            echo "<li>Login with Email and Password</li>"
-            echo "<li>Voice-based Appointment Booking (English & Spanish)</li>"
-            echo "<li>Error Handling for Mic Access</li>"
-            echo "EOF"
-          } >> $GITHUB_OUTPUT
+          echo "passed_count=$(echo $summary | jq '.totalPassed')" >> $GITHUB_OUTPUT
+          echo "failed_count=$(echo $summary | jq '.totalFailed')" >> $GITHUB_OUTPUT
+          echo "skipped_count=$(echo $summary | jq '.totalSkipped')" >> $GITHUB_OUTPUT
+          echo "duration=Auto Extracted" >> $GITHUB_OUTPUT
+
+          echo 'features_tested<<EOF' >> $GITHUB_OUTPUT
+          echo $summary | jq -r '.features[] | "<li>" + .name + "</li>"' >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
+
+          echo 'steps_summary<<EOF' >> $GITHUB_OUTPUT
+          echo $summary | jq -r '.features[].steps[] | select(.stepName != null) | "- " + .stepName + " (" + .status + ")"' >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
+
+      - name: Set Job Status
+        id: set_status
+        if: always()
+        run: echo "status=${{ job.status }}" >> $GITHUB_OUTPUT
 
   deploy:
     needs: test
@@ -150,6 +158,9 @@ jobs:
             ${{ needs.test.outputs.features_tested }}
             </ul>
 
+            <h3>📋 Step Summary:</h3>
+            <pre>${{ needs.test.outputs.steps_summary }}</pre>
+
             <h3>📊 Test Summary:</h3>
             <ul>
               <li>✅ Passed: <strong>${{ needs.test.outputs.passed_count }}</strong></li>
@@ -163,7 +174,6 @@ jobs:
             </p>
 
             <p><strong>🖼 Screenshot Attached</strong> (if generated successfully).</p>
-
             <hr>
 
             <p>👀 Please review the report and logs for failed scenarios, if any.<br>
@@ -172,3 +182,4 @@ jobs:
             <p>Regards,<br>
             <strong>GitHub CI Bot</strong><br>
             <em>Techolution QA Automation</em></p>
+          attachments: ./html-report/report-screenshot.png
