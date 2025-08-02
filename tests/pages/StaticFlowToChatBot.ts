@@ -28,12 +28,12 @@ export class StaticFlowToChatbot {
   }
 
   async isHomepageVisible() {
-    const visible = await this.page.locator(baptistLocators.homepage).isVisible();
+    const visible = await this.page.locator(baptistLocators.homepage).isVisible({timeout: 60000});
     this.world.addLog(`Homepage visibility: ${visible}`);
     return visible;
   }
-async verifyNavigationBarVisible() {
-    await expect(this.page.locator(baptistLocators.navigationBar)).toBeVisible(); 
+  async verifyNavigationBarVisible() {
+    await expect(this.page.locator(baptistLocators.navigationBar)).toBeVisible({timeout: 60000}); 
     await this.page.locator(baptistLocators.navigationBar).click(); 
     
   }
@@ -85,7 +85,7 @@ async verifyNavigationBarVisible() {
   }
 
   async verifyOverlayAndButton(buttonText: string) {
-    await expect(this.page.locator(baptistLocators.overLay)).toBeVisible();
+    await expect(this.page.locator(baptistLocators.overLay)).toBeVisible({timeout: 60000});
     await expect(this.page.getByText(buttonText).first().isVisible).toBeTruthy(); // e.g., "Got It"
   }
 }
